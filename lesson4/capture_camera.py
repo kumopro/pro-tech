@@ -3,7 +3,7 @@ import readchar
 
 def main():
     cam = picamera.PiCamera()
-    cam.resolution(640, 480)
+    cam.resolution = (640, 480)
     camera.start_preview()
 
     while True:
