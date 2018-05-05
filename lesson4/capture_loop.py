@@ -14,7 +14,7 @@ def main():
         elif key == "c":
             for i in range(3):
                 fname = "my_picture_{}.png".format(i)
-                cam.capture('my_picture.png')
+                cam.capture(fname)
 
     cam.stop_preview()
 main()
