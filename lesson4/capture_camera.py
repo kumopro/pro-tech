@@ -4,7 +4,7 @@ import readchar
 def main():
     cam = picamera.PiCamera()
     cam.resolution = (640, 480)
-    camera.start_preview()
+    cam.start_preview()
 
     while True:
         key = readchar.readkey()
@@ -12,7 +12,7 @@ def main():
         if key == "q":
             break
         elif key == "c":
-            camera.capture('my_picture.png')
+            cam.capture('my_picture.png')
 
-    camera.stop_preview()
+    cam.stop_preview()
 main()
