@@ -1,5 +1,5 @@
-import picamera
 import readchar
+import picamera
 
 def main():
     cam = picamera.PiCamera()
