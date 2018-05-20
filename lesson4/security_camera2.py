@@ -49,6 +49,9 @@ def main():
             fname = "my_picture_{}.png".format(count)
             cam.capture(fname)
             count += 1
+
+            if count > 10:
+                break
         if distance < 10:
             break
 
