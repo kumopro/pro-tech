@@ -1,4 +1,5 @@
 import wiringpi
+import time
 import picamera
 
 def getDistance(trig_pin, echo_pin):
