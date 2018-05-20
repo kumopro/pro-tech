@@ -40,13 +40,13 @@ def main():
         distance = getDistance(trig_pin, echo_pin)
         print(distance)
 
-        time.sleep(2)  # [sec]
+        time.sleep(0.5)  # [sec]
 
         if distance < 15:
             print("capture")
             fname = "my_picture.png"
             cam.capture(fname)
-        elif distance < 8:
+        elif distance < 10:
             break
 
     cam.stop_preview()
