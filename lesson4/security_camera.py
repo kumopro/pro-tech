@@ -1,5 +1,5 @@
-import cv2
-import readchar
+import wiringpi
+import picamera
 
 def getDistance(trig_pin, echo_pin):
     ### trigger
@@ -31,9 +31,9 @@ def main():
 
     wiringpi.digitalWrite(trig_pin, wiringpi.LOW)
 
-    cap = cv2.VideoCapture(0)
-    cap.set(CV_CAP_PROP_FRAME_WIDTH, 640)
-    cap.set(CV_CAP_PROP_FRAME_HEIGHT, 400)
+    cam = picamera.PiCamera()
+    cam.resolution = (640, 480)
+    cam.start_preview()
 
     while True:
         distance = getDistance(trig_pin, echo_pin)
@@ -41,17 +41,13 @@ def main():
 
         time.sleep(2)  # [sec]
 
-        ret, frame = cap.read()
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        cv2.imshow("Capture", gray)
-        key = readchar.readkey()
-
-        if key == "q":
+        if distance < 15:
+            print("capture")
+            fname = "my_picture.png"
+            cam.capture(fname)
+        elif distance < 8:
             break
-        elif key == "c" or distance < 15:
-            cv2.imwrite("image.png", gray)
 
-    cap.release()
-    cv2.destroyAllWindows()
+    cam.stop_preview()
 
 main()
