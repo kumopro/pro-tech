@@ -36,7 +36,7 @@ def main():
     cam.resolution = (640, 480)
     cam.start_preview()
     
-    count = 0
+    count = 1
 
     while True:
         distance = getDistance(trig_pin, echo_pin)
@@ -52,7 +52,7 @@ def main():
 
             if count > 10:
                 break
-        if distance < 10:
+        if distance < 8:
             break
 
     cam.stop_preview()

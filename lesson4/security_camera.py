@@ -46,7 +46,7 @@ def main():
             print("capture")
             fname = "my_picture.png"
             cam.capture(fname)
-        if distance < 10:
+        if distance < 8:
             break
 
     cam.stop_preview()
