@@ -1,9 +1,5 @@
-for i in range(1, 11):
+for i in range(1, 6):
     if i == 1:
-        print("1st prize")
-    elif i == 2:
-        print("2nd prize")
-    elif i == 3:
-        print("3rd prize")
+        print("1 cat")
     else:
-        print("{}th prize".format(i))
+        print("{} cats".format(i))
