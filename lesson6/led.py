@@ -10,10 +10,9 @@ def main():
 
     # main
     print("start")
-    while True:
-        wiringpi.digitalWrite(led_pin, wiringpi.HIGH)
-        time.sleep(5)  # [sec]
-        wiringpi.digitalWrite(led_pin, wiringpi.LOW)
+    wiringpi.digitalWrite(led_pin, wiringpi.HIGH)
+    time.sleep(5)  # [sec]
+    wiringpi.digitalWrite(led_pin, wiringpi.LOW)
     print("end")
 
 main()
