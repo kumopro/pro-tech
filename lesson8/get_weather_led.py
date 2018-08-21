@@ -7,22 +7,23 @@ def get_tomorrow_weather():
     data = requests.get(url).json()
 
     forecasts = data['forecasts']
-    forecast_tomorrow = forecasts[1]
-    weather_tomorrow = forecast_tomorrow['telop']
-    print(weather_tomorrow)
-    
-    return weather_tomorrow
+    tomorrow_forecast = forecasts[1]
+    tomorrow_weather = forecast_tomorrow['telop']
+    print(tomorrow_weather)
+    return tomorrow_weather
 
-def main():
+def main():    
     led_pin = 23
     wiringpi.wiringPiSetupGpio()
     wiringpi.pinMode(led_pin, wiringpi.OUTPUT)
+    
+    tomorrow_weather = get_tomorrow_weather
 
-    if 'é' in weather_tomorrow:
-        print('ææはéがéります')
+    if '雨' in tomorrow_weather:
+        print('明日は雨が降ります')
         wiringpi.digitalWrite(led_pin, wiringpi.HIGH)
     else:
-        print('ææはéがéりません')
+        print('明日は雨が降りません')
         wiringpi.digitalWrite(led_pin, wiringpi.LOW)
 
 main()
