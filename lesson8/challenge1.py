@@ -10,10 +10,10 @@ def print_tomorrow_temp():
     forecasts = data['forecasts']
     tomorrow_forecast = forecasts[1]
     temp = tomorrow_forecast['temperature']
-    min_temp = temp['min']['celcius']
-    max_temp = temp['max']['celcius']
-    print("ææのæäææは{}åです".format(min_temp))
-    print("ææのæéææは{}åです".format(max_temp))
+    min_temp = temp['min']['celsius']
+    max_temp = temp['max']['celsius']
+    print("明日の最低気温は{}度です".format(min_temp))
+    print("明日の最高気温は{}度です".format(max_temp))
     
 def main():    
     print_tomorrow_temp()
