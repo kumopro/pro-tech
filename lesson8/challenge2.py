@@ -23,8 +23,8 @@ def main():
 
     diff = get_tomorrow_temp_diff()
 
-    if diff > 10:
-        print('明日は1日の間に気温差が10度以上あります')
+    if diff > 8:
+        print('明日は1日の間に気温差が8度以上あります')
         wiringpi.digitalWrite(led_pin, wiringpi.HIGH)
         time.sleep(5)
         wiringpi.digitalWrite(led_pin, wiringpi.LOW)        
