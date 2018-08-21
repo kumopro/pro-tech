@@ -11,8 +11,8 @@ def get_tomorrow_temp_diff():
     tomorrow_forecast = forecasts[1]
 
     temp = tomorrow_forecast['temperature']
-    min_temp = temp['min']['celsius']
-    max_temp = temp['max']['celsius']
+    min_temp = float(temp['min']['celsius'])
+    max_temp = float(temp['max']['celsius'])
 
     return max_temp - min_temp
 
