@@ -1,5 +1,6 @@
 import requests
 import json
+import wiringpi
 
 def get_tomorrow_weather():
     url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city=130010'
