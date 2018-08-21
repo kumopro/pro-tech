@@ -3,31 +3,28 @@ import json
 import wiringpi
 import time
 
-def get_min_temp_diff():
+def get_tomorrow_temp_diff():
     url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city=130010'
     data = requests.get(url).json()
 
     forecasts = data['forecasts']
-    today_forecast = forecasts[0]
     tomorrow_forecast = forecasts[1]
 
-    today_temp = today_forecast['temperature']
-    today_min_temp = today_temp['min']['celsius']
+    temp = tomorrow_forecast['temperature']
+    min_temp = temp['min']['celsius']
+    max_temp = temp['max']['celsius']
 
-    tomorrow_temp = tomorrow_forecast['temperature']
-    tomorrow_min_temp = tomorrow_temp['min']['celsius']
-
-    return tomorrow_min_temp - today_min_temp
+    return max_temp - min_temp
 
 def main():    
     led_pin = 23
     wiringpi.wiringPiSetupGpio()
     wiringpi.pinMode(led_pin, wiringpi.OUTPUT)
 
-    diff = get_min_temp_diff()
+    diff = get_tomorrow_temp_diff()
 
-    if diff < 0:
-        print('明日の朝は今日より冷え込みます')
+    if diff > 10:
+        print('明日は1日の間に気温差が10度以上あります')
         wiringpi.digitalWrite(led_pin, wiringpi.HIGH)
         time.sleep(5)
         wiringpi.digitalWrite(led_pin, wiringpi.LOW)        
