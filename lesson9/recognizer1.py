@@ -9,12 +9,9 @@ def recognize():
     recognizer = VisualRecognitionV3(version=version, iam_apikey=api_key)
     with open(filename, 'rb') as image:
         results = recognizer.classify(image).get_result()
-    print(json.dumps(results, indent=2))
-    print(type(results))
-    print(results)
+    # print(json.dumps(results, indent=2))
     r = results['images'][0]['classifiers'][0]['classes']
 
-    for i in range(3):
-        print(r[i])
+    print(r[0]['class'])
 
 recognize()

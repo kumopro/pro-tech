@@ -28,13 +28,13 @@ def getDistance(trig_pin, echo_pin):
 
 def recognize(filename):
     version = '2018-03-19'
-    api_key = ''
+    api_key = 'outJYFDh3fDNNwJcqQIzb09rDNAqZX-5iwJvilfENioc'
 
     recognizer = VisualRecognitionV3(version=version, iam_apikey=api_key)
     with open(filename, 'rb') as image:
         results = recognizer.classify(image).get_result()
     r = results['images'][0]['classifiers'][0]['classes']
-    return r[0]
+    return r[0]['class']
 
 def main():
     trig_pin = 17
