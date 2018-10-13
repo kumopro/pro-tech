@@ -11,12 +11,12 @@ def text2speech(mode="ja"):
         password=PASSWORD
         )
 
-    with open('speech_result.wav', 'wb') as audio_file:
+    with open('speech_result.mp3', 'wb') as audio_file:
         if mode=="ja":
             audio_file.write(
                 text_to_speech.synthesize(
                     TEXT,
-                    'audio/wav',
+                    'audio/mp3',
                     'ja-JP_EmiVoice'
                     ).get_result().content)
         else:
