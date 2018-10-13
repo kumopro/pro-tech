@@ -7,7 +7,7 @@ def recognize():
     filename = 'dog.jpg'
 
     recognizer = VisualRecognitionV3(version=version, iam_apikey=api_key)
-    with open (filename, 'rb') as image:
+    with open(filename, 'rb') as image:
         results = recognizer.classify(image).get_result()
     print(json.dumps(results, indent=2))
     print(type(results))
