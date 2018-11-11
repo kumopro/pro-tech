@@ -6,7 +6,6 @@ def translate():
     WVR_API_KEY = 'FcHA3xI6U7H2QaTQ9jiwwkNvWRgmwIK_VgkTeB6HjFSF'
     TEXT = 'dog'
 
-
     translator = LanguageTranslatorV3(version=WVR_VERSION, iam_apikey=WVR_API_KEY)
 
     results = translator.translate(text=TEXT, model_id='en-ja').get_result()
