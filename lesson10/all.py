@@ -14,7 +14,7 @@ def translate(text_en):
     translator = LanguageTranslatorV3(version=version, iam_apikey=api_key)
 
     results = translator.translate(text=text_en, model_id='en-ja').get_result()
-    return results['translations']['translation']
+    return results['translations'][0]['translation']
 
 def text2speech(text, filename):
     username = '4a3d1e76-9132-4f83-b131-122da190f921'
@@ -33,6 +33,36 @@ def play(filename):
     time.sleep(1)
     pygame.mixer.music.stop()
     pygame.mixer.quit()
+
+def getDistance(trig_pin, echo_pin):
+    ### trigger
+    wiringpi.digitalWrite(trig_pin, wiringpi.HIGH)
+    time.sleep(0.00001)  # [sec]
+    wiringpi.digitalWrite(trig_pin, wiringpi.LOW)
+
+    ### response time
+    while wiringpi.digitalRead(echo_pin) == 0:
+        time_begin = time.time()
+    
+    while wiringpi.digitalRead(echo_pin) == 1:
+        time_end = time.time()
+
+    t = time_end - time_begin
+    
+    ### calculate distance
+    distance = t * 17000
+
+    return distance
+
+def recognize(filename):
+    version = '2018-03-19'
+    api_key = 'outJYFDh3fDNNwJcqQIzb09rDNAqZX-5iwJvilfENioc'
+
+    recognizer = VisualRecognitionV3(version=version, iam_apikey=api_key)
+    with open(filename, 'rb') as image:
+        results = recognizer.classify(image).get_result()
+    r = results['images'][0]['classifiers'][0]['classes']
+    return r[0]['class']
 
 def main():
     trig_pin = 17
