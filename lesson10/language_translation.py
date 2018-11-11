@@ -9,10 +9,8 @@ def translate():
 
     translator = LanguageTranslatorV3(version=WVR_VERSION, iam_apikey=WVR_API_KEY)
 
-    models = translator.list_models().get_result()
-    print(json.dumps(models, indent=2))
-
     results = translator.translate(text=TEXT, model_id='en-ja').get_result()
-    print(results)
+    r = results['translations'][0]['translation']
+    print(r)
 
 translate()

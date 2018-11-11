@@ -4,7 +4,7 @@ from watson_developer_cloud import TextToSpeechV1
 def text2speech(mode="ja"):
     USER_NAME= '4a3d1e76-9132-4f83-b131-122da190f921'
     PASSWORD = 'QmHSjNTK52jt'
-    TEXT = 'こんにちは'
+    TEXT = '犬'
 
     text_to_speech = TextToSpeechV1(
         username=USER_NAME,
