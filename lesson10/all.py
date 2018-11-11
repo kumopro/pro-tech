@@ -9,7 +9,7 @@ import pygame.mixer
 
 def translate(text_en):
     version = '2018-05-01'
-    api_key = 'FcHA3xI6U7H2QaTQ9jiwwkNvWRgmwIK_VgkTeB6HjFSF'
+    api_key = ''
 
     translator = LanguageTranslatorV3(version=version, iam_apikey=api_key)
 
@@ -17,8 +17,8 @@ def translate(text_en):
     return results['translations'][0]['translation']
 
 def text2speech(text, filename):
-    username = '4a3d1e76-9132-4f83-b131-122da190f921'
-    password = 'QmHSjNTK52jt'
+    username = ''
+    password = ''
 
     text_to_speech = TextToSpeechV1(username=username, password=password)
     r = text_to_speech.synthesize(text, 'audio/mp3', 'ja-JP_EmiVoice').get_result().content
@@ -56,7 +56,7 @@ def getDistance(trig_pin, echo_pin):
 
 def recognize(filename):
     version = '2018-03-19'
-    api_key = 'outJYFDh3fDNNwJcqQIzb09rDNAqZX-5iwJvilfENioc'
+    api_key = ''
 
     recognizer = VisualRecognitionV3(version=version, iam_apikey=api_key)
     with open(filename, 'rb') as image:

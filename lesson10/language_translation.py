@@ -3,7 +3,7 @@ from watson_developer_cloud import LanguageTranslatorV3
 
 def translate(text_en):
     version = '2018-05-01'
-    api_key = 'FcHA3xI6U7H2QaTQ9jiwwkNvWRgmwIK_VgkTeB6HjFSF'
+    api_key = ''
 
     translator = LanguageTranslatorV3(version=version, iam_apikey=api_key)
 
