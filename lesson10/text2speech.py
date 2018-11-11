@@ -2,8 +2,8 @@ import json
 from watson_developer_cloud import TextToSpeechV1
 
 def text2speech(text):
-    username = '4a3d1e76-9132-4f83-b131-122da190f921'
-    password = 'QmHSjNTK52jt'
+    username = ''
+    password = ''
 
     text_to_speech = TextToSpeechV1(
         username=username,

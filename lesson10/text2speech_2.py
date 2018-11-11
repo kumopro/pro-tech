@@ -14,7 +14,7 @@ def text2speech(text, filename, mode='ja'):
     else:
         voice_mode = 'en-US_AllisonVoice'
 
-    text_to_speech.synthesize(
+    r = text_to_speech.synthesize(
         text,
         'audio/mp3',
         voice_mode
