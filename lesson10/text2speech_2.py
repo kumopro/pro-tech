@@ -17,7 +17,7 @@ def text2speech(text, filename, mode='ja'):
     r = text_to_speech.synthesize(
         text,
         'audio/mp3',
-        voice_mode
+        voice_mode,
         ).get_result().content
 
     with open(filename, 'wb') as audio_file:
