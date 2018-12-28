@@ -5,16 +5,18 @@ import time
 from watson_developer_cloud import TextToSpeechV1
 import pygame.mixer
 
-def get_tomorrow_weather():
+def get_forecast():
     url = 'http://weather.livedoor.com/forecast/webservice/json/v1?city=130010'
     data = requests.get(url).json()
 
+    location = data['location']['city']
     forecasts = data['forecasts']
     tomorrow_forecast = forecasts[1]
     tomorrow_weather = tomorrow_forecast['telop']
-    print(tomorrow_weather)
 
-    return tomorrow_weather
+    forecast = '明日の{0}の天気は{1}です'.format(location, tomorrow_weather)
+
+    return forecast
 
 def text2speech(text, filename):
     api_key = 'wNyc_zSpxAT9DbEL0Tig0w8J9Eakdu585EQRLDQY9Pl3'
@@ -30,7 +32,7 @@ def play(filename):
     pygame.mixer.init()
     pygame.mixer.music.load(filename)
     pygame.mixer.music.play()
-    time.sleep(3)
+    time.sleep(5)
     pygame.mixer.music.stop()
     pygame.mixer.quit()
 
@@ -55,10 +57,7 @@ def getDistance(trig_pin, echo_pin):
     return distance
 
 def save_forecast_audio(forecast_filename):
-    tomorrow_weather = get_tomorrow_weather()
-    forecast = ''  # forecastは英語で「予報」という意味です
-
-    forecast = '明日の天気は{}です'.format(tomorrow_weather)
+    forecast = get_forecast()  # forecastは英語で「予報」という意味
     print(forecast)
 
     text2speech(forecast, forecast_filename)
