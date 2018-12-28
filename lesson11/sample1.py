@@ -30,7 +30,7 @@ def play(filename):
     pygame.mixer.init()
     pygame.mixer.music.load(filename)
     pygame.mixer.music.play()
-    time.sleep(1)
+    time.sleep(3)
     pygame.mixer.music.stop()
     pygame.mixer.quit()
 
