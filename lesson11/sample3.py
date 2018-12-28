@@ -26,7 +26,7 @@ def getDistance(trig_pin, echo_pin):
 
 def estimate_age(filename):
     version = '2018-03-19'
-    api_key = 'outJYFDh3fDNNwJcqQIzb09rDNAqZX-5iwJvilfENioc'
+    api_key = ''
 
     recognizer = VisualRecognitionV3(version=version, iam_apikey=api_key)
     with open (filename, 'rb') as image:
