@@ -34,6 +34,26 @@ def play(filename):
     pygame.mixer.music.stop()
     pygame.mixer.quit()
 
+def getDistance(trig_pin, echo_pin):
+    ### trigger
+    wiringpi.digitalWrite(trig_pin, wiringpi.HIGH)
+    time.sleep(0.00001)  # [sec]
+    wiringpi.digitalWrite(trig_pin, wiringpi.LOW)
+
+    ### response time
+    while wiringpi.digitalRead(echo_pin) == 0:
+        time_begin = time.time()
+    
+    while wiringpi.digitalRead(echo_pin) == 1:
+        time_end = time.time()
+
+    t = time_end - time_begin
+    
+    ### calculate distance
+    distance = t * 17000
+
+    return distance
+
 def save_forecast_audio(forecast_filename):
     tomorrow_weather = get_tomorrow_weather()
     forecast = ''  # forecastは英語で「予報」という意味です
