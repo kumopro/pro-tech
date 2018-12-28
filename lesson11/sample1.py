@@ -58,10 +58,8 @@ def save_forecast_audio(forecast_filename):
     tomorrow_weather = get_tomorrow_weather()
     forecast = ''  # forecastは英語で「予報」という意味です
 
-    if '雨' in tomorrow_weather:
-        forecast = '明日は雨が降ります'
-    else:
-        forecast = '明日は雨が降りません'
+    forecast = '明日の天気は{}です'.format(tomorrow_weather)
+    print(forecast)
 
     text2speech(forecast, forecast_filename)
 
