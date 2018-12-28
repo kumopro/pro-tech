@@ -17,10 +17,10 @@ def get_tomorrow_weather():
     return tomorrow_weather
 
 def text2speech(text, filename):
-    username = ''
-    password = ''
+    api_key = 'wNyc_zSpxAT9DbEL0Tig0w8J9Eakdu585EQRLDQY9Pl3'
+    url = 'https://stream.watsonplatform.net/text-to-speech/api'
 
-    text_to_speech = TextToSpeechV1(username=username, password=password)
+    text_to_speech = TextToSpeechV1(aim_apikey=api_key, url=url)
     r = text_to_speech.synthesize(text, 'audio/mp3', 'ja-JP_EmiVoice').get_result().content
 
     with open(filename, 'wb') as audio_file:
